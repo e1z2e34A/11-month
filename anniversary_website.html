@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Handwritten Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our 11 Months Anniversary</title>
+  <style>
+    /* Floating hearts container */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.9;
+      animation: floatUp linear forwards;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-10vh) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* Elegant + playful theme tweaks */
+    header {
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    .section h2 {
+      font-family: 'Georgia', serif;
+      font-size: 2rem;
+      color: #d6336c;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+    }
+
+    .memory-card {
+      border: 2px solid #ffb3c6;
+    }
+
+    body {
+      font-family: 'Pacifico', cursive;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: bgMove 20s ease infinite;
+      background-size: 400% 400%;
+      animation: bgMove 15s ease infinite;
+      color: #222;
+    }
+
+    @keyframes bgMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    header {
+      background: rgba(255, 71, 87, 0.85);
+      backdrop-filter: blur(6px);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      animation: heartbeat 1.8s infinite;
+      color: #ff4dff;
+      text-shadow: 0 0 10px #ff4dff, 0 0 20px #ff4dff;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      }
+
+      to {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+      }
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      animation: fadeIn 2s ease;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeUp 1.2s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .memories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .memory-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .memory-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .memory-card img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      animation: fadeIn 2s ease;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 90%;
+      animation: popup 0.6s ease;
+    }
+
+    @keyframes popup {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Slideshow */
+    .slideshow-container {
+      max-width: 900px;
+      margin: 40px auto;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .fade {
+      animation: fadeSlide 1.5s ease;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0.4;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Heart smooth pop */
+    @keyframes heartPop {
+      0% {
+        transform: scale(0.4);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Soft-floating sparkles */
+    .sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkleFloat 4s linear infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Neon glowing cards */
+    .memory-card {
+      border: 2px solid #ff4dff;
+      box-shadow: 0 0 10px #ff4dff;
+    }
+
+    /* Heartbeat animation */
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+
+      25% {
+        transform: scale(1.15);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+
+      60% {
+        transform: scale(1.15);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Neon frame around whole page */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 6px solid #ff4dff;
+      box-shadow: 0 0 25px #ff4dff, inset 0 0 25px #ff4dff;
+      pointer-events: none;
+      border-radius: 20px;
+    }
+
+    /* Particle effects */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: particleFloat 6s linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .section p {
+      color: #ff4dff;
+      font-size: 1.25rem;
+    }
+  </style>
+  <script>
+    // Particle generator
+    function createParticle() {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = 4 + Math.random() * 4 + 's';
+      document.querySelector('.particles').appendChild(p);
+      setTimeout(() => p.remove(), 8000);
+    }
+    setInterval(createParticle, 180);
+
+
+    // Password gate
+    document.addEventListener('DOMContentLoaded', () => {
+      const pass = prompt('Enter Password to View:');
+      if (pass === '0011') {
+        document.getElementById('protectedBody').style.display = 'block';
+      } else {
+        document.body.innerHTML = '<h2 style="color:white; text-align:center; margin-top:40px;">Access Denied</h2>';
+      }
+    });
+  </script>
+</head>
+
+<body style="display:none;" id="protectedBody">
+  <header>
+    <h1>Happy 11 Months Anniversary ❤️</h1>
+    <p>Thank you for being with me, for your love, and for all the beautiful moments.</p>
+  </header>
+
+  <div class="section">
+    <h2>My Message to You</h2>
+    <p>
+      Sheba My Love, <br> <br>
+
+      As we celebrate ten beautiful months together, I just want to take a moment to appreciate everything you’ve been
+      to me. You’ve brought laughter into my boring days, comfort into my stressful moments, and happiness into places I
+      didn’t even know needed it. Being with you has shown me how simple moments can become some of the most
+      unforgettable memories — from our little jokes, to our random talks, to every time you’ve supported me without
+      even realizing it. <br> <br>
+
+      Thank you for choosing me, for staying with me, and for being someone I can always trust and feel safe with. I
+      don’t ever take your kindness, your patience, or your presence for granted. You’ve made these past months feel
+      meaningful, and I’m grateful for every second you’ve spent with me. <br> <br>
+
+      I pray this is only the beginning of many more moments, more growth, more smiles, and more memories we’ll build
+      together. <br> <br>
+      You are special to me — more than you know. <br> <br>
+
+      With love, always. 💖
+    </p>
+
+  </div>
+
+  <div class="section">
+    <h2>Our Memories 📸</h2>
+    <div class="memories">
+      <div class="memory-card">
+        <img src="1st_pic.jpg" alt="Memory 1" />
+        <p>Our first picture together </p>
+      </div>
+      <div class="memory-card">
+        <img src="2nd_pic.jpg" alt="Memory 2" />
+        <p>2nd picture together</p>
+      </div>
+      <div class="memory-card">
+        <img src="3rd_pic.jpg" alt="Memory 3" />
+        <p>Another pic on the same day </p>
+      </div>
+      <div class="memory-card">
+        <img src="4th_pic.jpg" alt="Memory 3" />
+        <p>Cute</p>
+      </div>
+      <div class="memory-card">
+        <img src="5th_pic.jpg" alt="Memory 3" />
+        <p>I love this, see ur lips position, and my pose</p>
+      </div>
+      <div class="memory-card">
+        <img src="6th_pic.jpg" alt="Memory 3" />
+        <p></p>
+      </div>
+      <div class="memory-card">
+        <img src="7th_pic.jpg" alt="Memory 3" />
+        <p>I really loved this</p>
+      </div>
+      <div class="memory-card">
+        <img src="Christmas_carol.jpg" alt="Memory 3" />
+        <p>Christmas carol</p>
+      </div>
+      <div class="memory-card">
+        <img src="9th.jpg" alt="Memory 3" />
+        <p>Awwwn❤️</p>
+      </div>
+      <div class="memory-card">
+        <img src="10th.jpg" alt="Memory 3" />
+        <p>❤️</p>
+      </div>
+      <div class="memory-card">
+        <img src="11th.jpg" alt="Memory 3" />
+        <p></p>
+      </div>
+      <div class="memory-card">
+        <img src="12.jpeg" alt="Memory 3" />
+        <p>No comment</p>
+      </div>
+      <div class="memory-card">
+        <img src="13.jpeg" alt="Memory 3" />
+        <p>No comment</p>
+      </div>
+      <div class="memory-card">
+        <img src="14.jpeg" alt="Memory 3" />
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Made with ❤️ by Emmanuel
+  </footer>
+  <!-- Particle Effects -->
+  <div class="particles"></div>
+
+  <!-- Soft-floating Sparkles -->
+  <div class="sparkles"></div>
+
+  <!-- Floating Hearts Animation -->
+  <div class="hearts"></div>
+
+  <script>
+    // Sparkle generator
+    function createSparkle() {
+      const s = document.createElement('div');
+      s.classList.add('sparkle');
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.animationDuration = 3 + Math.random() * 3 + 's';
+      document.querySelector('.sparkles').appendChild(s);
+      setTimeout(() => s.remove(), 6000);
+    }
+    setInterval(createSparkle, 250);
+
+
+    // Heart floating animation generator
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+      document.querySelector('.hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 800);
+
+    // Popup anniversary message
+    // Modal popup instead of alert
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('popupModal').style.display = 'flex';
+      }, 800);
+    }
+  </script>
+
+  <!-- Background Music (soft, autoplay, loop) -->
+  <audio id="bg-music" src="kiss-the-rain-274811.mp3" autoplay loop muted></audio>
+
+  <!-- Floating Hearts Animation -->
+  <div class="hearts"></div>
+
+  <!-- Stylish Popup Modal -->
+  <div id="popupModal" class="modal">
+    <div class="modal-content">
+      <h2>Happy 11 Months Anniversary ❤️</h2>
+      <p>I appreciate you so much, thank you for every moment we’ve shared.</p>
+      <button onclick="document.getElementById('popupModal').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <!-- Slideshow Memories Section -->
+  <div class="slideshow-container">
+    <div class="slide fade"><img src="1st_pic.jpg" /></div>
+    <div class="slide fade"><img src="7th_pic.jpg" /></div>
+    <div class="slide fade"><img src="Christmas_carol.jpg" /></div>
+    <div class="slide fade"><img src="5th_pic.jpg" /></div>
+    <div class="slide fade"><img src="2nd_pic.jpg" /></div>
+    <div class="slide fade"><img src="9th.jpg" /></div>
+    <div class="slide fade"><img src="10th.jpg" /></div>
+    <div class="slide fade"><img src="11th.jpg" /></div>
+    <div class="slide fade"><img src="14.jpeg" /></div>
+  </div>
+
+
+  <script>
+    // auto play music 
+    document.body.addEventListener("click", function () {
+      const audio = document.getElementById("bg-music");
+      audio.muted = false;
+      audio.play();
+    });
+
+
+
+    // Floating heart animation
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animation = `floatUp ${3 + Math.random() * 3}s ease-in forwards, heartPop 0.5s ease`;
+      document.querySelector('.hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 700);
+
+    // Slideshow
+    let slideIndex = 0;
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 6000);
+    }
+    showSlides();
+  </script>
+</body>
+
+</html>
